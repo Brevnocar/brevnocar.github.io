@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru" data-company="Рельсы-рельсы, шпалы-шпалы">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Рельсы-рельсы, шпалы-шпалы — студия заботы о теле (демо)</title>
+<link rel="stylesheet" href="/demos/_shared/bot.css">
+<style>
+:root { --bg:#121618; --bg2:#192023; --card:#1f282b; --line:#2e3b3f; --ink:#e8f4f3; --muted:#92aaa9; --teal:#2ec4b6; --teal2:#17a398; --ice:#c4f1f2; --on:#0b1416; }
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { font: 17px/1.6 Georgia, "Times New Roman", serif; background: var(--bg); color: var(--ink); }
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1060px, 92vw); margin: 0 auto; }
+header { padding: 22px 0; }
+header .wrap { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 22px; font-style: italic; }
+.logo small { display: block; font: 11px/1 system-ui, sans-serif; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-top: 4px; }
+nav { display: flex; gap: 26px; font: 14px system-ui, sans-serif; color: var(--muted); }
+nav a:hover { color: var(--ice); }
+.btn { display: inline-block; padding: 14px 30px; background: var(--teal); color: var(--on); border: 0; border-radius: 4px; font: 700 15px system-ui, sans-serif; letter-spacing: .5px; cursor: pointer; transition: .2s; }
+.btn:hover { background: var(--ice); }
+.btn.o { background: transparent; color: var(--ice); box-shadow: inset 0 0 0 1.5px var(--teal); }
+.btn.o:hover { background: rgba(46,196,182,.14); }
+.hero { padding: 50px 0 80px; background: radial-gradient(700px 420px at 85% 30%, rgba(46,196,182,.18), transparent 70%); }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center; }
+.eyebrow { font: 12px system-ui, sans-serif; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); }
+h1 { font-size: clamp(38px, 6vw, 66px); line-height: 1.05; font-weight: 400; margin: 16px 0 20px; }
+h1 em { color: var(--teal); }
+.lead { color: var(--muted); font-size: 19px; max-width: 480px; }
+.cta { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+.arch { aspect-ratio: 3/4; border-radius: 999px 999px 24px 24px; background: linear-gradient(170deg, var(--ice), var(--teal) 55%, #0e5f5a); display: grid; place-items: center; font-size: 100px; box-shadow: 0 30px 70px rgba(46,196,182,.25), inset 0 0 0 1px rgba(255,255,255,.12); position: relative; overflow: hidden; }
+.arch::before, .arch::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); }
+.arch::before { width: 70%; aspect-ratio: 1; top: 34%; left: -10%; }
+.arch::after { width: 50%; aspect-ratio: 1; top: 8%; right: -14%; }
+.rating { display: flex; gap: 22px; align-items: center; margin-top: 34px; font: 14px system-ui, sans-serif; color: var(--muted); }
+.rating b { font: 400 36px Georgia, serif; color: var(--ice); margin-right: 6px; }
+section { padding: 70px 0; }
+h2 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 400; margin-bottom: 10px; }
+.sub { color: var(--muted); margin-bottom: 34px; max-width: 560px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 32px; }
+.panel h3 { font-size: 24px; font-weight: 400; margin-bottom: 4px; color: var(--ice); }
+.panel .cap { font: 13px system-ui, sans-serif; color: var(--muted); margin-bottom: 16px; }
+.menu { list-style: none; padding: 0; }
+.menu li { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px dashed var(--line); }
+.menu li span:last-child { font: 13px system-ui, sans-serif; color: var(--teal); }
+.alt { background: var(--bg2); }
+.mood { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.mood > div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 16px; text-align: center; transition: .2s; }
+.mood > div:hover { border-color: var(--teal); transform: translateY(-4px); }
+.mood .e { font-size: 38px; }
+.mood h4 { font-weight: 400; margin-top: 8px; color: var(--ice); }
+.mood small { color: var(--muted); font: 13px system-ui, sans-serif; }
+.botsec .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.ticks { list-style: none; padding: 0; margin-top: 16px; font-family: system-ui, sans-serif; font-size: 16px; color: var(--muted); }
+.ticks li { padding: 7px 0 7px 28px; position: relative; }
+.ticks li::before { content: "◆"; position: absolute; left: 0; color: var(--teal); font-size: 12px; top: 11px; }
+.note { font: 13px system-ui, sans-serif; color: var(--muted); margin-top: 12px; }
+footer { padding: 34px 0 90px; text-align: center; font: 14px system-ui, sans-serif; color: var(--muted); border-top: 1px solid var(--line); }
+.bd { --bd-accent: #17a398; --bd-on: #fff; --bd-ink: #e8f4f3; --bd-muted: #92aaa9; --bd-line: #2e3b3f; --bd-bg: #0d1214; --bd-head: #192023; --bd-bubble: #24312f; --bd-bubble-ink: #e8f4f3; --bd-key: #24312f; --bd-key-ink: #c4f1f2; --bd-key-hover: #2e3b3f; --bd-form: #192023; --bd-input: #121618; --bd-input-ink: #e8f4f3; --bd-input-line: #2e3b3f; --bd-admin: #192023; --bd-admin-ink: #e8f4f3; --bd-soft: #24312f; --bd-frame: #070b0c; --bd-tab: #192023; --bd-tab-ink: #c4f1f2; --bd-tab-line: #2e3b3f; }
+@media (max-width: 860px) {
+  .hero .wrap, .two, .botsec .wrap { grid-template-columns: 1fr; }
+  .mood { grid-template-columns: 1fr 1fr; }
+  .arch { max-width: 280px; margin: 0 auto; }
+  nav { display: none; }
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Рельсы-рельсы, шпалы-шпалы<small>Студия заботы о теле · Мурино</small></a>
+  <nav><a href="#menu">Процедуры</a><a href="#mood">Обёртывания</a><a href="#bot">Запись</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Спа-массаж · обёртывания · уход</div>
+    <h1>Время, которое вы <em>дарите себе</em></h1>
+    <p class="lead">Уютная студия в Мурино: массаж, обёртывания и процедуры для тела. Выберите ритуал по настроению.</p>
+    <div class="cta"><a class="btn" href="#bot">Записаться</a><a class="btn o" href="#menu">Смотреть процедуры</a></div>
+    <div class="rating"><span><b>4.9</b>в 2ГИС</span><span>416 оценок</span></div>
+  </div>
+  <div class="arch" aria-hidden="true">🌿</div>
+</div></div>
+
+<section class="alt" id="menu"><div class="wrap">
+  <h2>Процедуры</h2><p class="sub">Каталог, который легко листать с телефона. Цены в демо не указаны.</p>
+  <div class="two">
+    <div class="panel"><h3>Массаж</h3><div class="cap">Спа-массаж и уход за телом</div>
+      <ul class="menu"><li><span>Спа-массаж</span><span>по записи</span></li><li><span>Массаж с обёртыванием зоны</span><span>по записи</span></li><li><span>Уходовые программы</span><span>по записи</span></li></ul></div>
+    <div class="panel"><h3>Обёртывания</h3><div class="cap">По зонам или на всё тело</div>
+      <ul class="menu"><li><span>По зонам с массажем</span><span>по записи</span></li><li><span>На всё тело</span><span>по записи</span></li><li><span>Подарочный сертификат</span><span>скоро</span></li></ul></div>
+  </div>
+</div></section>
+
+<section id="mood"><div class="wrap">
+  <h2>Обёртывание по настроению</h2><p class="sub">Сочный фруктовый уход, согревающий шоколадный или свежесть и лёгкость.</p>
+  <div class="mood">
+    <div><div class="e">🍉</div><h4>Сочный арбуз</h4><small>увлажнение и питание</small></div>
+    <div><div class="e">🥭</div><h4>Манго</h4><small>витаминизация кожи</small></div>
+    <div><div class="e">🌿</div><h4>Мята и ментол</h4><small>свежесть и лифтинг</small></div>
+    <div><div class="e">🍍</div><h4>Ананас</h4><small>«жар-холод»</small></div>
+    <div><div class="e">🍫</div><h4>Шоколадное</h4><small>уютный согревающий ритуал</small></div>
+    <div><div class="e">🌊</div><h4>Водорослевое</h4><small>премиальный морской уход</small></div>
+    <div><div class="e">🌸</div><h4>Розовая глина</h4><small>восстановление молодости кожи</small></div>
+    <div><div class="e">💧</div><h4>Жидкий коллаген</h4><small>тонус и упругость</small></div>
+  </div>
+</div></section>
+
+<section class="alt botsec" id="bot"><div class="wrap">
+  <div>
+    <h2>Запись в Telegram</h2>
+    <p class="sub" style="margin-bottom:0">Бот знает каталог процедур, показывает свободное время и напоминает о визите. Рядом с вашей текущей онлайн-записью он закрывает вопросы, на которые сейчас отвечает администратор.</p>
+    <ul class="ticks">
+      <li>Каталог процедур с описанием в чате</li>
+      <li>Свободное время и запись в два нажатия</li>
+      <li>Напоминание о визите, повторная запись</li>
+    </ul>
+    <p class="note">Справа живая демка. Запишитесь и посмотрите заявку в панели администратора.</p>
+  </div>
+  <div id="bot-demo"></div>
+</div></section>
+
+<footer>Демо-страница. Названия процедур взяты из публичных постов студии, оформление условное.</footer>
+
+<script src="/demos/_shared/bot.js"></script>
+<script>
+BotDemo.mount('#bot-demo', {
+  botName: 'Рельсы · запись', avatar: 'Р', handle: '@relsy_demo_bot',
+  greeting: 'Здравствуйте! 🌿 Помогу выбрать процедуру и записаться.',
+  priceNote: 'Цены уточняйте у администратора (в демо не указаны).',
+  services: [
+    { name: 'Спа-массаж', meta: 'Расслабляющий уход за телом' },
+    { name: 'Обёртывание по зонам', meta: 'С массажем: арбуз, манго, мята, ананас' },
+    { name: 'Обёртывание на всё тело', meta: 'Шоколадное, водорослевое, розовая глина, коллаген' }
+  ],
+  slots: ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00'],
+  closedWeekdays: [], daysAhead: 6
+});
+</script>
+<script src="/demos/_shared/ribbon.js"></script>
+</body>
+</html>

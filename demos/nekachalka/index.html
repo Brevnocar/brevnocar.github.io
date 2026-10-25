@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ru" data-company="Некачалка">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Некачалка — фитнес-пространство в Мурино (демо)</title>
+<link rel="stylesheet" href="/demos/_shared/bot.css">
+<style>
+:root { --bg:#0e0f12; --panel:#17191e; --ink:#f2f4f7; --muted:#9aa3af; --lime:#c6ff3d; --line:#262932; }
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { font: 17px/1.55 "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--ink); }
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1100px, 92vw); margin: 0 auto; }
+header { position: sticky; top: 0; z-index: 10; background: rgba(14,15,18,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+.logo { font: 900 22px/1 Impact, "Arial Black", sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+.logo i { color: var(--lime); font-style: normal; }
+nav { display: flex; gap: 24px; color: var(--muted); font-size: 15px; }
+nav a:hover { color: var(--lime); }
+.btn { display: inline-block; padding: 14px 28px; background: var(--lime); color: #0e0f12; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; border: 0; cursor: pointer; font-size: 15px; clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%); transition: transform .15s, filter .15s; }
+.btn:hover { transform: translateX(4px); filter: brightness(1.08); }
+.btn.line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); clip-path: none; }
+.hero { padding: 90px 0 80px; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; right: -120px; top: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(198,255,61,.22), transparent 65%); }
+.kick { color: var(--lime); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 13px; }
+h1 { font: 900 clamp(46px, 9vw, 108px)/.95 Impact, "Arial Black", sans-serif; text-transform: uppercase; margin: 14px 0 22px; letter-spacing: -1px; }
+h1 span { color: transparent; -webkit-text-stroke: 2px var(--lime); }
+.lead { color: var(--muted); max-width: 560px; font-size: 19px; }
+.cta { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+.stats { display: flex; gap: 40px; margin-top: 46px; border-top: 1px solid var(--line); padding-top: 24px; flex-wrap: wrap; }
+.stats b { display: block; font: 900 40px/1 Impact, sans-serif; color: var(--lime); }
+.stats span { color: var(--muted); font-size: 14px; }
+section { padding: 70px 0; }
+h2 { font: 900 clamp(30px, 5vw, 50px)/1 Impact, "Arial Black", sans-serif; text-transform: uppercase; margin-bottom: 12px; }
+.sub { color: var(--muted); margin-bottom: 34px; max-width: 560px; }
+.dirs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.dir { background: var(--panel); border: 1px solid var(--line); padding: 26px 22px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; transition: .2s; }
+.dir:hover { border-color: var(--lime); transform: translateY(-6px); }
+.dir .n { font: 900 44px/1 Impact, sans-serif; color: var(--line); }
+.dir:hover .n { color: var(--lime); }
+.dir h3 { font-size: 22px; text-transform: uppercase; }
+.dir p { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.gift { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; background: var(--lime); color: #0e0f12; padding: 36px 40px; clip-path: polygon(0 0, 100% 0, 98% 100%, 0 100%); }
+.gift h3 { font: 900 32px/1.05 Impact, sans-serif; text-transform: uppercase; }
+.gift .btn { background: #0e0f12; color: var(--lime); }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.step { padding: 24px; border-left: 3px solid var(--lime); background: var(--panel); }
+.step b { color: var(--lime); font-size: 14px; letter-spacing: 2px; }
+.step h3 { margin: 6px 0; }
+.step p { color: var(--muted); font-size: 15px; }
+.botsec .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.ticks { list-style: none; padding: 0; margin-top: 16px; }
+.ticks li { padding: 8px 0 8px 30px; position: relative; color: var(--muted); }
+.ticks li::before { content: "▸"; color: var(--lime); position: absolute; left: 4px; }
+.note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+.addr { background: var(--panel); border: 1px solid var(--line); padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.addr h3 { color: var(--lime); text-transform: uppercase; font-size: 14px; letter-spacing: 2px; margin-bottom: 6px; }
+footer { padding: 34px 0 90px; color: var(--muted); font-size: 14px; text-align: center; border-top: 1px solid var(--line); }
+@media (max-width: 860px) {
+  .dirs { grid-template-columns: 1fr 1fr; }
+  .steps, .botsec .wrap, .addr { grid-template-columns: 1fr; }
+  nav { display: none; }
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Не<i>качалка</i></a>
+  <nav><a href="#dirs">Направления</a><a href="#how">Как начать</a><a href="#bot">Запись в Telegram</a><a href="#addr">Адрес</a></nav>
+  <a class="btn" href="#bot" style="padding:10px 20px;font-size:13px">Пробное</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="kick">Фитнес-пространство · Мурино</div>
+  <h1>Двигайся<br><span>без нуди</span></h1>
+  <p class="lead">Фитнес, танцы, пилатес и бокс в одном месте рядом с домом. Без давления и «качалочных» стереотипов.</p>
+  <div class="cta"><a class="btn" href="#bot">Записаться на пробное</a><a class="btn line" href="#dirs">Что у нас</a></div>
+  <div class="stats"><div><b>5.0</b><span>рейтинг в 2ГИС</span></div><div><b>110</b><span>оценок</span></div><div><b>4</b><span>направления</span></div></div>
+</div></div>
+
+<section id="dirs"><div class="wrap">
+  <h2>Направления</h2><p class="sub">Попробуйте всё и оставьте то, что нравится.</p>
+  <div class="dirs">
+    <div class="dir"><div class="n">01</div><div><h3>Фитнес</h3><p>Групповые тренировки на всё тело</p></div></div>
+    <div class="dir"><div class="n">02</div><div><h3>Танцы</h3><p>Движение под музыку без сложных связок</p></div></div>
+    <div class="dir"><div class="n">03</div><div><h3>Пилатес</h3><p>Осанка, мышцы кора, мягкая нагрузка</p></div></div>
+    <div class="dir"><div class="n">04</div><div><h3>Бокс</h3><p>Техника и выносливость, снять стресс</p></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="gift">
+  <div><h3>Пробное занятие<br>в подарок</h3><p>При покупке абонемента. Условия уточняйте у администратора.</p></div>
+  <a class="btn" href="#bot">Хочу пробное</a>
+</div></div></section>
+
+<section id="how"><div class="wrap">
+  <h2>Как начать</h2><p class="sub">Три шага, и вы на тренировке.</p>
+  <div class="steps">
+    <div class="step"><b>ШАГ 1</b><h3>Выберите направление</h3><p>Фитнес, танцы, пилатес или бокс.</p></div>
+    <div class="step"><b>ШАГ 2</b><h3>Запишитесь в боте</h3><p>Выберите день и время за минуту.</p></div>
+    <div class="step"><b>ШАГ 3</b><h3>Приходите</h3><p>Получите напоминание и приходите в удобное время.</p></div>
+  </div>
+</div></section>
+
+<section class="botsec" id="bot"><div class="wrap">
+  <div>
+    <h2>Запись в Telegram</h2>
+    <p class="sub" style="margin-bottom:0">Бот показывает расписание групп и записывает на пробное. Администратор сразу получает заявку.</p>
+    <ul class="ticks">
+      <li>Расписание фитнеса, танцев, пилатеса и бокса</li>
+      <li>Запись на пробное без звонка и переписки</li>
+      <li>Напоминание о тренировке и учёт абонементов</li>
+    </ul>
+    <p class="note">Справа живая демка: запишитесь и откройте вкладку «Панель администратора».</p>
+  </div>
+  <div id="bot-demo"></div>
+</div></section>
+
+<section id="addr"><div class="wrap">
+  <h2>Где нас найти</h2><p class="sub">Мурино, Петровский бульвар, дом 7. Вход со двора.</p>
+  <div class="addr">
+    <div><h3>Адрес</h3>г. Мурино, Петровский бульвар, 7</div>
+    <div><h3>Telegram</h3>@nekachalka</div>
+  </div>
+</div></section>
+
+<footer>Демо-страница. Все данные — публичные сведения о студии и условный пример оформления.</footer>
+
+<script src="/demos/_shared/bot.js"></script>
+<script>
+BotDemo.mount('#bot-demo', {
+  botName: 'Некачалка · запись', avatar: 'Н', handle: '@nekachalka_demo_bot',
+  greeting: 'Привет! 💪 Запишу вас на пробную тренировку в «Некачалку».',
+  priceNote: 'Цены и условия абонементов уточняйте у администратора (в демо не указаны).',
+  services: [
+    { name: 'Фитнес', meta: 'Групповая тренировка' },
+    { name: 'Танцы', meta: 'Группа для начинающих' },
+    { name: 'Пилатес', meta: 'Мягкая нагрузка' },
+    { name: 'Бокс', meta: 'Техника и кардио' }
+  ],
+  slots: ['09:00', '10:30', '12:00', '18:00', '19:30', '21:00'],
+  closedWeekdays: [], daysAhead: 6
+});
+document.querySelector('.bd').style.setProperty('--bd-accent', '#2b8a3e');
+</script>
+<script src="/demos/_shared/ribbon.js"></script>
+</body>
+</html>

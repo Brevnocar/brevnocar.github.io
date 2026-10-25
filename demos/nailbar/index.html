@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru" data-company="Nail Bar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nail Bar — ногтевая студия в Мурино (демо)</title>
+<link rel="stylesheet" href="/demos/_shared/bot.css">
+<style>
+:root { --bg:#e7e2d7; --card:#f1ede4; --line:#cfc9bb; --ink:#25272b; --muted:#6c6b66; --dark:#2a2c30; --dark2:#1d1f22; --fire:#ff4d1c; --fire2:#d93a0e; --on:#fff; --sand:#d8d2c3; }
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { font: 17px/1.6 "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1080px, 92vw); margin: 0 auto; }
+header { position: sticky; top: 0; z-index: 10; background: rgba(231,226,215,.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; height: 68px; }
+.logo { font: 700 26px/1 Georgia, serif; letter-spacing: 3px; text-transform: uppercase; }
+.logo span { color: var(--fire); }
+nav { display: flex; gap: 26px; font-size: 15px; color: var(--muted); }
+nav a:hover { color: var(--fire); }
+.btn { display: inline-block; padding: 14px 30px; border-radius: 0; border: 0; background: var(--fire); color: var(--on); font-weight: 700; font-size: 15px; font-family: inherit; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: .2s; box-shadow: 5px 5px 0 var(--dark); }
+.btn:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--dark); }
+.btn.o { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.btn.o:hover { background: var(--ink); color: var(--bg); transform: none; }
+.hero { padding: 60px 0 80px; border-bottom: 2px solid var(--dark); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
+.tag { color: var(--fire); letter-spacing: 4px; font-size: 13px; text-transform: uppercase; font-weight: 700; }
+h1 { font: 400 clamp(42px, 6.4vw, 74px)/1 Georgia, serif; margin: 16px 0 20px; letter-spacing: -1px; }
+h1 em { color: var(--fire); }
+.lead { color: var(--muted); font-size: 19px; max-width: 480px; }
+.cta { display: flex; gap: 16px; margin-top: 30px; flex-wrap: wrap; }
+.hands { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: end; }
+.nail { aspect-ratio: 1/1.9; border-radius: 60px 60px 6px 6px; box-shadow: 8px 8px 0 var(--dark); position: relative; overflow: hidden; }
+.nail::after { content: ""; position: absolute; top: 8%; left: 14%; width: 22%; height: 40%; border-radius: 40px; background: rgba(255,255,255,.35); }
+.nail:nth-child(1) { background: linear-gradient(160deg, #ff8a63, var(--fire)); }
+.nail:nth-child(2) { background: linear-gradient(160deg, #4a4d54, var(--dark2)); margin-bottom: 40px; }
+.nail:nth-child(3) { background: linear-gradient(160deg, #f6f1e6, #c9c2b2); }
+.nums { display: flex; gap: 36px; margin-top: 36px; }
+.nums b { display: block; font: 400 38px Georgia, serif; color: var(--fire); }
+.nums span { font-size: 13px; color: var(--muted); }
+.tape { background: var(--fire); color: var(--on); overflow: hidden; white-space: nowrap; padding: 12px 0; font-weight: 800; letter-spacing: 4px; font-size: 14px; border-bottom: 2px solid var(--dark); }
+.tape div { display: inline-block; animation: mq 30s linear infinite; }
+@keyframes mq { to { transform: translateX(-50%); } }
+section { padding: 70px 0; }
+h2 { font: 400 clamp(30px, 4.4vw, 46px) Georgia, serif; margin-bottom: 10px; }
+.sub { color: var(--muted); margin-bottom: 34px; max-width: 560px; }
+.svc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.svc > div { background: var(--card); border: 2px solid var(--dark); padding: 26px 20px; transition: .2s; }
+.svc > div:hover { background: var(--fire); color: var(--on); transform: translate(-4px, -4px); box-shadow: 6px 6px 0 var(--dark); }
+.svc > div:hover small { color: #ffe4da; }
+.svc .e { font-size: 36px; }
+.svc h4 { margin: 10px 0 4px; font-size: 19px; }
+.svc small { color: var(--muted); }
+.dark { background: var(--dark); color: #ece7dc; }
+.dark .sub { color: #a9a69d; }
+.why .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.why h3 { font: 400 24px Georgia, serif; margin-bottom: 6px; color: var(--fire); }
+.why p { color: #b5b2a9; font-size: 15px; }
+.why .n { font: 400 54px Georgia, serif; color: #44474d; line-height: 1; margin-bottom: 8px; }
+.botsec .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.ticks { list-style: none; padding: 0; margin-top: 16px; }
+.ticks li { padding: 7px 0 7px 30px; position: relative; }
+.ticks li::before { content: "■"; position: absolute; left: 0; color: var(--fire); font-size: 12px; top: 11px; }
+.note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+.box { background: var(--card); padding: 20px 22px; margin-top: 18px; font-size: 15px; color: var(--muted); border-left: 5px solid var(--fire); }
+footer { padding: 34px 0 90px; text-align: center; font-size: 14px; color: #a9a69d; background: var(--dark2); }
+.bd { --bd-accent: #ff4d1c; --bd-on: #fff; --bd-ink: #ece7dc; --bd-muted: #a9a69d; --bd-line: #3c3f45; --bd-bg: #1d1f22; --bd-head: #2a2c30; --bd-bubble: #34373c; --bd-bubble-ink: #ece7dc; --bd-key: #34373c; --bd-key-ink: #f1ede4; --bd-key-hover: #44474d; --bd-form: #2a2c30; --bd-input: #1d1f22; --bd-input-ink: #ece7dc; --bd-input-line: #44474d; --bd-admin: #2a2c30; --bd-admin-ink: #ece7dc; --bd-soft: #34373c; --bd-frame: #121315; --bd-tab: #2a2c30; --bd-tab-ink: #ece7dc; --bd-tab-line: #44474d; }
+@media (max-width: 860px) {
+  .hero .wrap, .botsec .wrap, .why .wrap { grid-template-columns: 1fr; }
+  .svc { grid-template-columns: 1fr 1fr; }
+  .hands { max-width: 280px; margin: 0 auto; }
+  nav { display: none; }
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Nail<span>·</span>Bar</a>
+  <nav><a href="#svc">Услуги</a><a href="#why">О студии</a><a href="#bot">Запись</a></nav>
+  <a class="btn" href="#bot" style="padding:10px 20px;font-size:13px;box-shadow:3px 3px 0 var(--dark)">Записаться</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <div class="tag">Ногтевая студия · Мурино</div>
+    <h1>Маникюр, который <em>радует</em> каждый день</h1>
+    <p class="lead">Аккуратная работа, чистота и внимание к деталям. Выберите услугу и удобное время.</p>
+    <div class="cta"><a class="btn" href="#bot">Записаться онлайн</a><a class="btn o" href="#svc">Услуги</a></div>
+    <div class="nums"><div><b>4.9</b><span>рейтинг в 2ГИС</span></div><div><b>284</b><span>оценки гостей</span></div></div>
+  </div>
+  <div class="hands" aria-hidden="true"><div class="nail"></div><div class="nail"></div><div class="nail"></div></div>
+</div></div>
+
+<div class="tape" aria-hidden="true"><div>МАНИКЮР ■ ПОКРЫТИЕ ■ ПЕДИКЮР ■ ДИЗАЙН ■ ЗАПИСЬ ОНЛАЙН ■ МАНИКЮР ■ ПОКРЫТИЕ ■ ПЕДИКЮР ■ ДИЗАЙН ■ ЗАПИСЬ ОНЛАЙН ■ МАНИКЮР ■ ПОКРЫТИЕ ■ ПЕДИКЮР ■ ДИЗАЙН ■ ЗАПИСЬ ОНЛАЙН ■ МАНИКЮР ■ ПОКРЫТИЕ ■ ПЕДИКЮР ■ ДИЗАЙН ■ ЗАПИСЬ ОНЛАЙН ■ </div></div>
+
+<section id="svc"><div class="wrap">
+  <h2>Услуги</h2><p class="sub">Прайс в демо не указан. На рабочем сайте здесь живой прайс с фильтром по мастерам.</p>
+  <div class="svc">
+    <div><div class="e">💅</div><h4>Маникюр</h4><small>классический и аппаратный</small></div>
+    <div><div class="e">✨</div><h4>Покрытие</h4><small>гель-лак и дизайн</small></div>
+    <div><div class="e">🦶</div><h4>Педикюр</h4><small>уход и покрытие</small></div>
+    <div><div class="e">🎀</div><h4>Комплексы</h4><small>маникюр + педикюр</small></div>
+  </div>
+</div></section>
+
+<section class="dark why" id="why"><div class="wrap">
+  <div><div class="n">01</div><h3>Стерильность</h3><p>Инструменты обрабатываются и упаковываются. Можно показать это прямо на сайте.</p></div>
+  <div><div class="n">02</div><h3>Мастера</h3><p>Профили мастеров с портфолио работ и свободным временем на неделю вперёд.</p></div>
+  <div><div class="n">03</div><h3>Запись без звонков</h3><p>Выбор услуги, мастера и времени в Telegram за минуту.</p></div>
+</div></section>
+
+<section class="botsec" id="bot"><div class="wrap">
+  <div>
+    <h2>Запись в Telegram</h2>
+    <p class="sub" style="margin-bottom:0">Если у вас уже настроена онлайн-запись, бот не заменяет её, а работает рядом: отвечает клиентам, показывает прайс и напоминает о визите.</p>
+    <ul class="ticks">
+      <li>Прайс и портфолио в чате</li>
+      <li>Напоминание за день и за два часа до визита</li>
+      <li>Заявки и подтверждения в панели администратора</li>
+    </ul>
+    <div class="box">Это условный пример. Для настоящей студии подключается тот же календарь записей, которым вы пользуетесь сейчас.</div>
+  </div>
+  <div id="bot-demo"></div>
+</div></section>
+
+<footer>Демо-страница. Оформление условное, это не официальный сайт студии.</footer>
+
+<script src="/demos/_shared/bot.js"></script>
+<script>
+BotDemo.mount('#bot-demo', {
+  botName: 'Nail Bar · запись', avatar: 'N', handle: '@nailbar_demo_bot',
+  greeting: 'Привет! 💅 Запишу вас на маникюр или педикюр.',
+  priceNote: 'Цены уточняйте у администратора (в демо не указаны).',
+  services: [
+    { name: 'Маникюр + покрытие', meta: 'Гель-лак, примерно 2 часа' },
+    { name: 'Маникюр без покрытия', meta: 'Классический или аппаратный' },
+    { name: 'Педикюр', meta: 'Уход и покрытие' },
+    { name: 'Снятие покрытия', meta: 'Быстрая услуга' }
+  ],
+  slots: ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00'],
+  closedWeekdays: [], daysAhead: 6
+});
+</script>
+<script src="/demos/_shared/ribbon.js"></script>
+</body>
+</html>

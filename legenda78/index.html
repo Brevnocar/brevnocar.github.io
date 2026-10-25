@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ru" data-company="Легенда 78">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Легенда 78 — автосервис в Колтушах (демо)</title>
+<style>
+:root {
+  --void:#000; --white:#fff; --ash:#9a9a9a; --mist:#bdbdbd;
+  --iris:#8052ff; --saffron:#ffb829; --teal:#15846e;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--void); color: var(--white); font: 200 18px/1.5 var(--font); font-feature-settings: "ss01" on; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1280px, 100% - 64px); margin: 0 auto; }
+
+/* навигация: прозрачная, без рамок */
+.nav { position: fixed; inset: 0 0 auto 0; z-index: 20; }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+.logo { display: flex; align-items: center; gap: 10px; font: 400 15px/1 var(--font); letter-spacing: .02em; }
+.logo svg { width: 22px; height: 22px; }
+.links { display: flex; gap: 34px; font: 600 13px/1 var(--font); letter-spacing: .04em; text-transform: uppercase; }
+.links a { color: var(--ash); transition: color .2s; }
+.links a:hover { color: var(--white); }
+.pill { display: inline-block; background: var(--iris); color: var(--white); font: 600 13px/1 var(--font); letter-spacing: .04em; text-transform: uppercase; padding: 15px 22px; border-radius: 24px; border: 0; cursor: pointer; transition: filter .2s, transform .2s; }
+.pill:hover { filter: brightness(1.15); transform: translateY(-1px); }
+.ghost { color: var(--ash); font: 400 14px/1 var(--font); border-bottom: 1px solid #333; padding-bottom: 4px; transition: color .2s, border-color .2s; }
+.ghost:hover { color: var(--white); border-color: var(--white); }
+
+/* первый экран */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 24px; }
+.label { font: 600 13px/1.2 var(--font); letter-spacing: .04em; text-transform: uppercase; color: var(--saffron); margin-bottom: 22px; }
+h1, h2 { font-weight: 400; letter-spacing: -.04em; }
+h1 { font-size: clamp(54px, 8.4vw, 113px); line-height: .98; margin-bottom: 34px; }
+.lead { max-width: 470px; color: var(--mist); margin-bottom: 40px; }
+.cta { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
+.stage { position: relative; aspect-ratio: 1; width: 100%; }
+#field { position: absolute; inset: 0; width: 100%; height: 100%; }
+.facts { display: flex; gap: 54px; margin-top: 64px; flex-wrap: wrap; }
+.facts b { display: block; font: 400 42px/1 var(--font); letter-spacing: -.04em; }
+.facts span { font: 400 12px/1.4 var(--font); color: var(--ash); text-transform: uppercase; letter-spacing: .06em; }
+
+/* секции: только типографика и пустота */
+section { padding: 120px 0; position: relative; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+h2 { font-size: clamp(40px, 5.2vw, 78px); line-height: 1.04; }
+.sub { color: var(--mist); max-width: 500px; margin-top: 26px; }
+.price { list-style: none; padding: 0; }
+.price li { display: flex; justify-content: space-between; gap: 28px; align-items: baseline; padding: 26px 0; }
+.price li + li { margin-top: 6px; }
+.price strong { font: 400 27px/1.15 var(--font); letter-spacing: -.02em; display: block; }
+.price small { color: var(--ash); font: 200 16px/1.4 var(--font); display: block; margin-top: 6px; }
+.price em { font: 400 27px/1.15 var(--font); font-style: normal; color: var(--saffron); white-space: nowrap; }
+.ex { color: var(--ash); font: 400 13px/1.5 var(--font); margin-top: 22px; }
+.steps { display: grid; gap: 54px; }
+.step b { font: 600 13px/1 var(--font); letter-spacing: .06em; color: var(--iris); text-transform: uppercase; }
+.step h3 { font: 400 36px/1.15 var(--font); letter-spacing: -.03em; margin: 12px 0 8px; }
+.step p { color: var(--mist); max-width: 420px; }
+.ticks { list-style: none; padding: 0; margin-top: 30px; color: var(--mist); }
+.ticks li { padding: 9px 0 9px 26px; position: relative; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 19px; width: 7px; height: 7px; background: var(--saffron); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.addr { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; margin-top: 56px; }
+.addr div { font: 400 24px/1.25 var(--font); letter-spacing: -.02em; }
+.addr small { display: block; font: 600 12px/1 var(--font); letter-spacing: .08em; text-transform: uppercase; color: var(--saffron); margin-bottom: 14px; }
+footer { padding: 70px 0 110px; color: var(--ash); font: 200 15px/1.6 var(--font); }
+footer a { color: var(--saffron); }
+
+/* форма записи */
+.book { max-width: 520px; }
+.book fieldset { border: 0; padding: 0; margin: 0 0 34px; min-width: 0; }
+.book legend { font: 600 12px/1 var(--font); letter-spacing: .08em; text-transform: uppercase; color: var(--saffron); margin-bottom: 16px; padding: 0; }
+.opts { display: flex; flex-wrap: wrap; gap: 10px; }
+.opts label { cursor: pointer; }
+.opts input { position: absolute; opacity: 0; pointer-events: none; }
+.opts span { display: inline-block; padding: 12px 18px; border-radius: 24px; background: #121212; color: var(--mist); font: 400 15px/1 var(--font); transition: background .2s, color .2s; }
+.opts label:hover span { background: #1c1c1c; color: var(--white); }
+.opts input:checked + span { background: var(--white); color: #000; }
+.opts input:focus-visible + span { outline: 2px solid var(--iris); outline-offset: 2px; }
+.fld { display: grid; gap: 18px; }
+.fld input[type=text], .fld input[type=tel] { width: 100%; background: transparent; border: 0; border-bottom: 1px solid #333; color: var(--white); font: 200 20px/1.4 var(--font); padding: 10px 0; outline: none; transition: border-color .2s; }
+.fld input:focus { border-color: var(--iris); }
+.fld input::placeholder { color: #666; }
+.book .pill { margin-top: 38px; }
+.done { display: none; }
+.done h3 { font: 400 42px/1.1 var(--font); letter-spacing: -.03em; margin-bottom: 14px; }
+.done p { color: var(--mist); }
+.done .ghost { display: inline-block; margin-top: 26px; cursor: pointer; background: none; border-top: 0; border-left: 0; border-right: 0; }
+.demo-note { color: var(--ash); font: 400 13px/1.5 var(--font); margin-top: 22px; }
+
+@media (max-width: 960px) {
+  .wrap { width: min(1280px, 100% - 40px); }
+  .links { display: none; }
+  .hero { min-height: auto; padding-top: 110px; }
+  .hero .wrap, .two, .addr { grid-template-columns: 1fr; gap: 40px; }
+  .stage { max-width: 440px; margin: 0 auto; }
+  section { padding: 80px 0; }
+  .facts { gap: 34px; margin-top: 40px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8052ff"/><stop offset="1" stop-color="#15846e"/></linearGradient></defs><path d="M12 2 22 21H2z" fill="none" stroke="url(#g)" stroke-width="2.2" stroke-linejoin="round"/></svg>
+    Легенда 78
+  </a>
+  <nav class="links"><a href="#prices">Услуги</a><a href="#how">Как записаться</a><a href="#book">Запись</a><a href="#addr">Адрес</a></nav>
+  <a class="pill" href="#book">Записаться</a>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <div>
+    <p class="label">Автосервис · Колтуши</p>
+    <h1>Диагностика<br>без сюрпризов.</h1>
+    <p class="lead">Скажем, что с машиной, сколько это стоит и когда будет готово. Записаться можно за минуту, без звонков и ожидания.</p>
+    <div class="cta"><a class="pill" href="#book">Записаться на диагностику</a><a class="ghost" href="#prices">Услуги и цены</a></div>
+    <div class="facts">
+      <div><b>5,0</b><span>рейтинг в 2ГИС</span></div>
+      <div><b>15</b><span>оценок в 2ГИС</span></div>
+      <div><b>1 мин</b><span>на запись</span></div>
+    </div>
+  </div>
+  <div class="stage"><canvas id="field" aria-hidden="true"></canvas></div>
+</div></div>
+
+<section id="prices"><div class="wrap two">
+  <div>
+    <p class="label">Услуги</p>
+    <h2>Цена видна<br>до визита.</h2>
+    <p class="sub">Клиент заранее понимает, что и примерно за сколько. Меньше одинаковых вопросов в переписке, больше записей.</p>
+  </div>
+  <div>
+    <ul class="price">
+      <li><span><strong>Компьютерная диагностика</strong><small>Считывание ошибок, рекомендации по ремонту</small></span><em>от 1 000 ₽</em></li>
+      <li><span><strong>Замена масла и фильтра</strong><small>Работа, без стоимости материалов</small></span><em>от 800 ₽</em></li>
+      <li><span><strong>Замена тормозных колодок</strong><small>На одной оси</small></span><em>от 1 200 ₽</em></li>
+      <li><span><strong>Диагностика ходовой</strong><small>Осмотр на подъёмнике</small></span><em>от 600 ₽</em></li>
+      <li><span><strong>Техническое обслуживание</strong><small>По регламенту производителя</small></span><em>по запросу</em></li>
+    </ul>
+    <p class="ex">Цены условные, для примера оформления. В рабочей версии будет ваш настоящий прайс, и вы сможете менять его сами.</p>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap two">
+  <div>
+    <p class="label">Как записаться</p>
+    <h2>Три шага,<br>и машина в боксе.</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><b>01</b><h3>Выберите услугу</h3><p>Диагностика, масло, тормоза, ходовая.</p></div>
+    <div class="step"><b>02</b><h3>Выберите время</h3><p>Свободные окна видны сразу, звонить не нужно.</p></div>
+    <div class="step"><b>03</b><h3>Приезжайте</h3><p>Придёт напоминание, мастер уже знает, что делать.</p></div>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap two">
+  <div>
+    <p class="label">Онлайн-запись</p>
+    <h2>Запишитесь<br>за минуту.</h2>
+    <p class="sub">Выберите услугу, день и время. Никаких приложений и звонков: работает прямо на сайте, с телефона и компьютера.</p>
+    <ul class="ticks">
+      <li>Заявка приходит администратору сразу, с услугой и временем</li>
+      <li>Администратор перезвонит и подтвердит запись</li>
+      <li>Занятое время не предлагается другим клиентам</li>
+    </ul>
+  </div>
+  <div>
+    <form class="book" id="bk" autocomplete="off">
+      <fieldset><legend>Услуга</legend><div class="opts" id="o-svc"></div></fieldset>
+      <fieldset><legend>День</legend><div class="opts" id="o-day"></div></fieldset>
+      <fieldset><legend>Время</legend><div class="opts" id="o-time"></div></fieldset>
+      <div class="fld">
+        <input type="text" id="f-name" placeholder="Ваше имя" aria-label="Ваше имя">
+        <input type="tel" id="f-tel" placeholder="Телефон" aria-label="Телефон">
+      </div>
+      <button class="pill" type="submit">Записаться</button>
+      <p class="demo-note">Это демо: введённые данные никуда не отправляются. В рабочей версии заявка приходит вам на почту, в мессенджер или в CRM.</p>
+    </form>
+    <div class="done" id="bk-done" role="status">
+      <h3>Заявка принята.</h3>
+      <p id="bk-text"></p>
+      <p class="demo-note">Это демо: на самом деле ничего не отправлено.</p>
+      <button class="ghost" type="button" id="bk-again">Записаться ещё раз</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="addr"><div class="wrap">
+  <p class="label">Где нас найти</p>
+  <h2>Колтуши,<br>Колхозная улица, 1.</h2>
+  <div class="addr">
+    <div><small>Адрес</small>Колтуши, Колхозная улица, 1</div>
+    <div><small>Запись</small>Онлайн на сайте, без звонка</div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Демо-страница. Использованы только публичные сведения о компании (название, адрес, рейтинг 2ГИС). Услуги и цены условные.<br><a href="https://brevnocar-portfolio.brevnocar-portfolio.workers.dev" target="_blank" rel="noopener">Другие мои работы — в портфолио →</a></div></footer>
+
+<script>
+/* Демо-форма записи: всё считается в браузере, ничего не отправляется. */
+(function () {
+  var SVC = [['Компьютерная диагностика', 'от 1 000 ₽'], ['Замена масла и фильтра', 'от 800 ₽'], ['Замена тормозных колодок', 'от 1 200 ₽'], ['Диагностика ходовой', 'от 600 ₽']];
+  var TIMES = ['09:00', '10:30', '12:00', '14:00', '15:30', '17:00'];
+  var WD = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'], MO = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+  function opts(id, name, items, label) {
+    var el = document.getElementById(id);
+    items.forEach(function (it, i) {
+      var l = document.createElement('label');
+      l.innerHTML = '<input type="radio" name="' + name + '" value="' + i + '"' + (i === 0 ? ' checked' : '') + '><span></span>';
+      l.querySelector('span').textContent = label(it);
+      el.appendChild(l);
+    });
+  }
+  var days = [], d = new Date();
+  while (days.length < 6) { d = new Date(d.getTime() + 864e5); if (d.getDay() !== 0) days.push(d); } // воскресенье выходной
+  opts('o-svc', 'svc', SVC, function (x) { return x[0] + ' · ' + x[1]; });
+  opts('o-day', 'day', days, function (x) { return WD[x.getDay()] + ', ' + x.getDate() + ' ' + MO[x.getMonth()]; });
+  opts('o-time', 'time', TIMES, function (x) { return x; });
+  function val(n) { return +document.querySelector('input[name=' + n + ']:checked').value; }
+  var form = document.getElementById('bk'), done = document.getElementById('bk-done');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nm = document.getElementById('f-name').value.trim(), dd = days[val('day')];
+    document.getElementById('bk-text').textContent = (nm ? nm + ', ждём' : 'Ждём') + ' вас: ' + SVC[val('svc')][0].toLowerCase() + ', ' + WD[dd.getDay()] + ' ' + dd.getDate() + ' ' + MO[dd.getMonth()] + ' в ' + TIMES[val('time')] + '. Администратор подтвердит запись по телефону.';
+    form.style.display = 'none'; done.style.display = 'block';
+  });
+  document.getElementById('bk-again').addEventListener('click', function () { done.style.display = 'none'; form.style.display = ''; form.reset(); });
+})();
+
+/* Созвездие из контурных треугольников в форме колеса. Рисуется на canvas, без библиотек. */
+(function () {
+  var cv = document.getElementById('field'), ctx = cv.getContext('2d');
+  var COLORS = ['#8052ff', '#ffb829', '#15846e', '#e04bd1', '#3d7bff', '#a58bff'];
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pts = [], amb = [], W = 0, H = 0, dpr = 1, t0 = performance.now(), running = true;
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function pick() { return COLORS[(Math.random() * COLORS.length) | 0]; }
+  function build() {
+    pts = []; amb = [];
+    // обод: плотное кольцо с неровностями
+    for (var i = 0; i < 620; i++) {
+      var a = Math.random() * Math.PI * 2, r = 0.78 + (Math.random() - .5) * 0.13 * (Math.random() < .3 ? 2 : 1);
+      pts.push({ a: a, r: r, s: rnd(2.4, 5.2), c: pick(), ph: rnd(0, 6.28), rot: rnd(0, 6.28) });
+    }
+    // внутренний ободок
+    for (i = 0; i < 260; i++) {
+      a = Math.random() * Math.PI * 2; r = 0.6 + (Math.random() - .5) * 0.05;
+      pts.push({ a: a, r: r, s: rnd(2, 4), c: pick(), ph: rnd(0, 6.28), rot: rnd(0, 6.28) });
+    }
+    // спицы (5 штук)
+    for (var k = 0; k < 5; k++) {
+      var base = k / 5 * Math.PI * 2;
+      for (i = 0; i < 90; i++) {
+        var rr = 0.12 + Math.random() * 0.48, off = (Math.random() - .5) * 0.07 * (1 - rr * 0.4);
+        pts.push({ a: base + off / Math.max(rr, .2), r: rr, s: rnd(2, 4), c: pick(), ph: rnd(0, 6.28), rot: rnd(0, 6.28) });
+      }
+    }
+    // ступица
+    for (i = 0; i < 120; i++) {
+      a = Math.random() * Math.PI * 2; r = Math.pow(Math.random(), .7) * 0.14;
+      pts.push({ a: a, r: r, s: rnd(2, 4.4), c: pick(), ph: rnd(0, 6.28), rot: rnd(0, 6.28) });
+    }
+    // рассеянные частицы вокруг
+    for (i = 0; i < 160; i++) {
+      amb.push({ x: rnd(-.1, 1.1), y: rnd(-.1, 1.1), s: rnd(2, 5), c: pick(), ph: rnd(0, 6.28), rot: rnd(0, 6.28), v: rnd(.005, .02) });
+    }
+  }
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var b = cv.getBoundingClientRect(); W = b.width; H = b.height;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function tri(x, y, s, rot, col, alpha) {
+    ctx.globalAlpha = alpha; ctx.strokeStyle = col; ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    for (var j = 0; j < 3; j++) {
+      var an = rot + j * 2.0944, px = x + Math.cos(an) * s, py = y + Math.sin(an) * s;
+      if (j) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+    }
+    ctx.closePath(); ctx.stroke();
+  }
+  function frame(now) {
+    if (!running) return;
+    var t = (now - t0) / 1000, R = Math.min(W, H) * 0.46, cx = W / 2, cy = H / 2, spin = reduce ? 0.3 : t * 0.12;
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < amb.length; i++) {
+      var p = amb[i], y = ((p.y - (reduce ? 0 : t * p.v)) % 1.2 + 1.2) % 1.2 - .1;
+      tri(p.x * W, y * H, p.s, p.rot + t * .2, p.c, 0.18 + 0.12 * Math.sin(t + p.ph));
+    }
+    for (i = 0; i < pts.length; i++) {
+      var q = pts[i], ang = q.a + spin, rr = q.r * R * (1 + 0.012 * Math.sin(t * 1.3 + q.ph));
+      tri(cx + Math.cos(ang) * rr, cy + Math.sin(ang) * rr, q.s, q.rot + (reduce ? 0 : t * .3), q.c, 0.55 + 0.4 * Math.sin(t * 1.1 + q.ph));
+    }
+    ctx.globalAlpha = 1;
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  function start() { size(); build(); running = true; requestAnimationFrame(frame); }
+  window.addEventListener('resize', function () { size(); if (reduce) requestAnimationFrame(frame); });
+  document.addEventListener('visibilitychange', function () {
+    running = !document.hidden; if (running && !reduce) requestAnimationFrame(frame);
+  });
+  start();
+})();
+</script>
+<script src="/_shared/ribbon.js"></script>
+</body>
+</html>

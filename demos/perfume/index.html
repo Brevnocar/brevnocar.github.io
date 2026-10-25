@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>NOCTIS — демо-концепт 3D-страницы товара</title>
+<meta name="description" content="Демо-концепт: страница духов с 3D-флаконом, анимация привязана к прокрутке. Вымышленный бренд.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<header class="top">
+  <a class="brand" href="#s0">NOCTIS</a>
+  <span class="pill">Демо-концепт · вымышленный бренд · не реальный товар</span>
+</header>
+
+<nav class="dots" aria-label="Разделы">
+  <button aria-label="Начало"></button>
+  <button aria-label="Стекло"></button>
+  <button aria-label="Распыление"></button>
+  <button aria-label="Из чего состоит"></button>
+  <button aria-label="Ноты"></button>
+  <button aria-label="Финал"></button>
+</nav>
+
+<button id="sound" class="sound" aria-pressed="false" aria-label="Включить звук"><i></i><span>Звук: выкл</span></button>
+
+<div class="tag">колпачок · латунь с позолотой</div>
+<div class="tag">кольцо · золото 18 K</div>
+<div class="tag">корпус · кристальное стекло</div>
+<div class="tag">аромат · 50 мл</div>
+<div class="tag">табличка · гравировка</div>
+
+<main>
+  <section class="screen hero" id="s0">
+    <div class="copy">
+      <p class="eyebrow">Eau de parfum · 50 мл</p>
+      <h1>Ночь, которую<br>можно носить</h1>
+      <p class="lead">Тёмная роза, шафран и тёплый ветивер. Листайте вниз: флакон повернётся, откроется и разберётся на части.</p>
+    </div>
+    <div class="scroll-hint">листайте <i></i></div>
+  </section>
+
+  <section class="screen" id="s1">
+    <div class="copy">
+      <p class="eyebrow">01 · Стекло</p>
+      <h2>Прозрачность,<br>как у льда</h2>
+      <p>Толстое стекло преломляет всё, что стоит за ним: слова, свет, вас. Грани скруглены вручную, поэтому блики плавно перетекают, а не ломаются.</p>
+    </div>
+  </section>
+
+  <section class="screen right" id="s2">
+    <div class="copy">
+      <p class="eyebrow">02 · Распыление</p>
+      <h2>Один нажим</h2>
+      <p>Колпачок снимается, и аромат раскрывается облаком. Чем дальше вы прокручиваете, тем шире оно становится.</p>
+    </div>
+  </section>
+
+  <section class="screen center low" id="s3">
+    <div class="copy">
+      <p class="eyebrow">03 · Анатомия</p>
+      <h2>Из чего он состоит</h2>
+    </div>
+  </section>
+
+  <section class="screen" id="s4">
+    <div class="copy">
+      <p class="eyebrow">04 · Ноты</p>
+      <h2>Три акта</h2>
+      <ul class="notes">
+        <li><b>Верх</b> шафран, розовый перец</li>
+        <li><b>Сердце</b> дамасская роза, пачули</li>
+        <li><b>База</b> ветивер, амбра, дым</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="screen end" id="s5">
+    <div class="copy">
+      <p class="eyebrow">Это демо-концепт</p>
+      <h2>Такой сайт можно сделать<br>под ваш товар</h2>
+      <p class="lead">3D-модель и анимация собираются под ваш предмет: бутылка, кроссовок, часы, мебель. Если нужна лёгкая страница без 3D — тоже сделаю.</p>
+      <p class="cta"><a href="https://brevnocar-portfolio.brevnocar-portfolio.workers.dev" target="_blank" rel="noopener">Портфолио · Иван</a></p>
+      <p class="fine">NOCTIS — вымышленный бренд, флакон построен из простых форм прямо в браузере. Сайты и Telegram-боты для малого бизнеса.</p>
+    </div>
+  </section>
+</main>
+
+<noscript><p class="fallback">Для 3D-анимации нужен включённый JavaScript.</p></noscript>
+<p class="fallback gl-msg">3D не запустилось на этом устройстве (WebGL выключен). Это демо-страница без картинки: остальной текст ниже.</p>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

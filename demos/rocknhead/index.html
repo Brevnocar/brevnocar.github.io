@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ru" data-company="Rock-n-head">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Rock-n-head — барбершоп в Новом Девяткино (демо)</title>
+<link rel="stylesheet" href="/demos/_shared/bot.css">
+<style>
+:root { --bg:#111010; --panel:#1b1918; --ink:#efe9df; --muted:#a09688; --gold:#c9a24b; --red:#b3322a; --line:#2c2926; }
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { font: 17px/1.6 "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1060px, 92vw); margin: 0 auto; }
+header { position: sticky; top: 0; z-index: 10; background: rgba(17,16,16,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; height: 66px; }
+.logo { font: 700 22px/1 Georgia, serif; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+nav { display: flex; gap: 26px; color: var(--muted); font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+nav a:hover { color: var(--gold); }
+.btn { display: inline-block; padding: 14px 30px; background: var(--gold); color: #1a1408; border: 0; font: 700 14px "Segoe UI", sans-serif; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: .2s; }
+.btn:hover { background: #ddb85d; }
+.btn.o { background: transparent; color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.hero { padding: 110px 0 90px; text-align: center; background: linear-gradient(rgba(17,16,16,.6), var(--bg)), repeating-linear-gradient(45deg, #1a1816 0 14px, #161413 14px 28px); }
+.pole { display: inline-block; width: 16px; height: 64px; border-radius: 8px; background: repeating-linear-gradient(-45deg, var(--red) 0 8px, #f4efe6 8px 16px, #2a4ea0 16px 24px); margin-bottom: 22px; border: 2px solid #3a3632; }
+.kick { color: var(--gold); letter-spacing: 6px; font-size: 13px; text-transform: uppercase; }
+h1 { font: 400 clamp(46px, 9vw, 104px)/1 Georgia, serif; margin: 14px 0 20px; letter-spacing: -1px; }
+h1 i { color: var(--gold); }
+.lead { color: var(--muted); max-width: 520px; margin: 0 auto; font-size: 19px; }
+.cta { display: flex; gap: 14px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+.rate { margin-top: 40px; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
+.rate b { color: var(--gold); font: 400 28px Georgia, serif; margin-right: 6px; }
+section { padding: 70px 0; }
+h2 { font: 400 clamp(30px, 4.5vw, 46px) Georgia, serif; text-align: center; margin-bottom: 8px; }
+.sub { color: var(--muted); margin: 0 auto 38px; max-width: 520px; text-align: center; }
+.line { width: 60px; height: 2px; background: var(--gold); margin: 14px auto 22px; }
+.price { max-width: 700px; margin: 0 auto; }
+.price li { list-style: none; display: flex; align-items: baseline; gap: 10px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.price li .d { flex: 1; border-bottom: 1px dotted #4a443d; transform: translateY(-4px); }
+.price li b { font: 400 20px Georgia, serif; }
+.price li span:last-child { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+.price small { display: block; color: var(--muted); font-size: 13px; }
+.panel { background: var(--panel); }
+.feat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.feat div { border: 1px solid var(--line); padding: 30px 24px; text-align: center; }
+.feat .e { font-size: 34px; }
+.feat h3 { font: 400 21px Georgia, serif; margin: 10px 0 6px; color: var(--gold); }
+.feat p { color: var(--muted); font-size: 15px; }
+.botsec .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.botsec h2, .botsec .sub { text-align: left; margin-left: 0; }
+.ticks { list-style: none; padding: 0; margin-top: 6px; }
+.ticks li { padding: 8px 0 8px 28px; position: relative; color: var(--muted); }
+.ticks li::before { content: "✂"; position: absolute; left: 0; color: var(--gold); }
+.note { font-size: 13px; color: var(--muted); margin-top: 14px; }
+.addr { text-align: center; }
+.addr p { color: var(--muted); }
+footer { padding: 34px 0 90px; text-align: center; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
+@media (max-width: 860px) {
+  .botsec .wrap, .feat { grid-template-columns: 1fr; }
+  nav { display: none; }
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Rock-n-head</a>
+  <nav><a href="#price">Услуги</a><a href="#why">Барбершоп</a><a href="#bot">Запись</a></nav>
+  <a class="btn" href="#bot" style="padding:10px 20px;font-size:12px">Записаться</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="pole" aria-hidden="true"></div>
+  <div class="kick">Барбершоп · Новое Девяткино</div>
+  <h1>Стрижка с <i>характером</i></h1>
+  <p class="lead">Мужские стрижки, борода и уход. Приходите на заранее выбранное время, без очередей и ожидания.</p>
+  <div class="cta"><a class="btn" href="#bot">Записаться</a><a class="btn o" href="#price">Услуги</a></div>
+  <div class="rate"><b>5.0</b> рейтинг в 2ГИС · 36 оценок · 2 филиала</div>
+</div></div>
+
+<section id="price"><div class="wrap">
+  <h2>Услуги</h2><div class="line"></div><p class="sub">Цены в демо не указаны. На рабочем сайте здесь прайс-лист с филиалами.</p>
+  <ul class="price">
+    <li><b>Мужская стрижка</b><span class="d"></span><span>по записи</span></li>
+    <li><b>Стрижка бороды и усов</b><span class="d"></span><span>по записи</span></li>
+    <li><b>Стрижка + борода</b><span class="d"></span><span>по записи</span></li>
+    <li><b>Детская стрижка</b><span class="d"></span><span>по записи</span></li>
+    <li><b>Королевское бритьё</b><span class="d"></span><span>по записи</span></li>
+  </ul>
+</div></section>
+
+<section class="panel" id="why"><div class="wrap">
+  <h2>Почему к нам</h2><div class="line"></div>
+  <div class="feat">
+    <div><div class="e">⏱</div><h3>Без очередей</h3><p>Запись на точное время, мастер ждёт именно вас.</p></div>
+    <div><div class="e">🧴</div><h3>Уход</h3><p>Профессиональная косметика и подбор средств для укладки.</p></div>
+    <div><div class="e">📍</div><h3>Два филиала</h3><p>Выбирайте ту точку, до которой удобнее добраться.</p></div>
+  </div>
+</div></section>
+
+<section class="botsec" id="bot"><div class="wrap">
+  <div>
+    <h2>Запись в Telegram</h2><div class="line" style="margin-left:0"></div>
+    <p class="sub">Бот предлагает филиал, мастера, услугу и время. Администратору приходит заявка, клиенту приходит напоминание.</p>
+    <ul class="ticks">
+      <li>Выбор филиала и мастера</li>
+      <li>Напоминание за день и «пора обновить стрижку» через 3–4 недели</li>
+      <li>Панель администратора: заявки, отмены, загрузка мастеров</li>
+    </ul>
+    <p class="note">Справа живая демка: попробуйте записаться.</p>
+  </div>
+  <div id="bot-demo"></div>
+</div></section>
+
+<section class="addr"><div class="wrap"><h2>Адрес</h2><div class="line"></div><p>Новое Девяткино, Арсенальная улица, 5а</p></div></section>
+
+<footer>Демо-страница. Оформление условное, это не официальный сайт барбершопа.</footer>
+
+<script src="/demos/_shared/bot.js"></script>
+<script>
+BotDemo.mount('#bot-demo', {
+  botName: 'Rock-n-head · запись', avatar: 'R', handle: '@rocknhead_demo_bot',
+  greeting: 'Здорово! ✂️ Запишу вас на стрижку.',
+  priceNote: 'Цены уточняйте у администратора (в демо не указаны).',
+  services: [
+    { name: 'Мужская стрижка', meta: 'Классическая или модельная' },
+    { name: 'Борода и усы', meta: 'Моделирование, уход' },
+    { name: 'Стрижка + борода', meta: 'Комплекс' },
+    { name: 'Детская стрижка', meta: 'Для мальчиков' }
+  ],
+  slots: ['10:00', '11:30', '13:00', '15:00', '17:00', '19:00'],
+  closedWeekdays: [], daysAhead: 6
+});
+document.querySelector('.bd').style.setProperty('--bd-accent', '#a07d28');
+</script>
+<script src="/demos/_shared/ribbon.js"></script>
+</body>
+</html>

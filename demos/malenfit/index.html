@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ru" data-company="Мален.Фит">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Мален.Фит — танцы, растяжка, йога (демо)</title>
+<link rel="stylesheet" href="/demos/_shared/bot.css">
+<style>
+:root { --bg:#0d0f33; --bg2:#14174a; --card:#191d58; --soft:#20266e; --line:#2c3390; --ink:#eaf1ff; --muted:#9fabdf; --ice:#9bdcff; --ice2:#d6f1ff; --indigo:#6c7bff; --violet:#a58bff; --on:#0d0f33; }
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { font: 17px/1.55 "Segoe UI", system-ui, sans-serif; color: var(--ink); background: var(--bg); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1100px, 92vw); margin: 0 auto; }
+header { position: sticky; top: 0; z-index: 20; background: rgba(13,15,51,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+.logo { font-weight: 800; letter-spacing: .5px; font-size: 21px; }
+.logo span { color: var(--ice); }
+nav { display: flex; gap: 24px; font-size: 15px; color: var(--muted); }
+nav a:hover { color: var(--ice); }
+.btn { display: inline-block; padding: 14px 28px; border-radius: 999px; background: var(--ice); color: var(--on); font-weight: 700; border: 0; cursor: pointer; font-size: 16px; font-family: inherit; transition: transform .15s, box-shadow .15s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(155,220,255,.35); }
+.btn.ghost { background: transparent; color: var(--ice); box-shadow: inset 0 0 0 2px var(--ice); }
+
+/* hero */
+.hero { padding: 70px 0 60px; position: relative; overflow: hidden; background: radial-gradient(900px 460px at 88% 0, rgba(108,123,255,.45), transparent 70%), radial-gradient(640px 340px at 0 100%, rgba(155,220,255,.18), transparent 70%); }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.tag { display: inline-block; padding: 7px 15px; border-radius: 999px; background: var(--soft); color: var(--ice); font-size: 14px; font-weight: 600; border: 1px solid var(--line); }
+h1 { font-size: clamp(38px, 5.6vw, 64px); line-height: 1.04; margin: 18px 0; letter-spacing: -1.2px; }
+h1 em { font-style: normal; background: linear-gradient(100deg, var(--ice), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { color: var(--muted); font-size: 19px; max-width: 520px; }
+.cta { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+.facts { display: flex; gap: 30px; margin-top: 36px; }
+.facts b { display: block; font-size: 30px; color: var(--ice); line-height: 1.1; }
+.facts span { font-size: 13px; color: var(--muted); }
+.orbit { position: relative; aspect-ratio: 1; width: min(100%, 460px); margin: 0 auto; }
+.orbit .ring { position: absolute; border-radius: 50%; border: 2px dashed rgba(155,220,255,.28); animation: spin 40s linear infinite; }
+.orbit .r1 { inset: 0; } .orbit .r2 { inset: 12%; animation-direction: reverse; animation-duration: 30s; } .orbit .r3 { inset: 26%; border-style: solid; border-color: rgba(155,220,255,.14); }
+.orbit .core { position: absolute; inset: 30%; border-radius: 50%; background: conic-gradient(from 200deg, var(--indigo), var(--ice), var(--violet), var(--indigo)); box-shadow: 0 0 70px rgba(108,123,255,.6); display: grid; place-items: center; color: var(--on); text-align: center; animation: pulse 6s ease-in-out infinite; }
+.orbit .core b { font-size: clamp(34px, 6vw, 52px); display: block; line-height: 1; }
+.orbit .core span { font-size: 13px; opacity: .85; font-weight: 600; }
+.chip { position: absolute; padding: 9px 16px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--ice2); box-shadow: 0 10px 28px rgba(0,0,0,.4); font-weight: 700; font-size: 15px; animation: float 5s ease-in-out infinite; }
+.chip.a { top: 6%; left: 8%; } .chip.b { top: 40%; right: -2%; animation-delay: -1.6s; } .chip.c { bottom: 8%; left: 14%; animation-delay: -3.2s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 50% { transform: scale(1.05); } }
+@keyframes float { 50% { transform: translateY(-12px); } }
+
+/* marquee */
+.marq { background: var(--ice); color: var(--on); overflow: hidden; white-space: nowrap; padding: 14px 0; font-weight: 800; letter-spacing: 3px; font-size: 15px; }
+.marq div { display: inline-block; animation: mq 28s linear infinite; }
+@keyframes mq { to { transform: translateX(-50%); } }
+
+section { padding: 76px 0; }
+h2 { font-size: clamp(28px, 4vw, 42px); letter-spacing: -.6px; margin-bottom: 10px; }
+.sub { color: var(--muted); margin-bottom: 36px; max-width: 580px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 30px; transition: transform .25s, border-color .25s; position: relative; overflow: hidden; }
+.card:hover { transform: translateY(-6px); border-color: var(--ice); }
+.card::after { content: ""; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px; border-radius: 50%; background: var(--soft); transition: transform .4s; }
+.card:hover::after { transform: scale(1.6); }
+.card > * { position: relative; z-index: 1; }
+.card .ic { font-size: 40px; }
+.card h3 { margin: 12px 0 6px; font-size: 22px; }
+.card p { color: var(--muted); font-size: 15px; }
+
+/* quiz */
+.quiz { background: linear-gradient(135deg, #2a31b8, #4a3fd1 60%, #5a4de0); color: #fff; border-radius: 32px; padding: 46px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; border: 1px solid var(--line); }
+.quiz h2 { color: #fff; }
+.quiz .q { font-weight: 700; margin-bottom: 10px; }
+.opts { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.opts button { padding: 10px 18px; border-radius: 999px; border: 2px solid rgba(214,241,255,.5); background: transparent; color: #fff; font: inherit; font-size: 15px; cursor: pointer; transition: .15s; }
+.opts button:hover { background: rgba(255,255,255,.14); }
+.opts button.on { background: var(--ice); color: var(--on); border-color: var(--ice); font-weight: 700; }
+.result { background: var(--bg); color: var(--ink); border-radius: 22px; padding: 28px; min-height: 230px; display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--line); }
+.result .big { font-size: 44px; }
+.result h3 { font-size: 26px; margin: 4px 0; color: var(--ice); }
+.result p { color: var(--muted); margin-bottom: 16px; }
+.result.wait { text-align: center; color: var(--muted); }
+
+/* schedule */
+.filters { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.filters button { padding: 9px 20px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ice2); font: inherit; font-weight: 600; cursor: pointer; }
+.filters button.on { background: var(--ice); color: var(--on); border-color: var(--ice); }
+.sch { display: grid; gap: 10px; }
+.row { display: grid; grid-template-columns: 150px 90px 1fr auto; gap: 14px; align-items: center; background: var(--card); border: 1px solid var(--line); padding: 16px 22px; border-radius: 16px; transition: .2s; }
+.row:hover { transform: translateX(6px); border-color: var(--ice); }
+.row[hidden] { display: none; }
+.row b { font-size: 17px; }
+.pill { padding: 4px 12px; border-radius: 999px; font-size: 13px; background: var(--soft); color: var(--ice); font-weight: 600; }
+.row a { color: var(--ice); font-weight: 700; font-size: 14px; }
+.note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+/* steps + faq */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: s; }
+.step { padding: 26px; border-radius: 22px; background: var(--card); border: 1px solid var(--line); counter-increment: s; }
+.step::before { content: counter(s); width: 42px; height: 42px; border-radius: 50%; background: var(--ice); color: var(--on); display: grid; place-items: center; font-weight: 800; margin-bottom: 12px; }
+.step h3 { margin-bottom: 4px; }
+.step p { color: var(--muted); font-size: 15px; }
+.faq { max-width: 760px; }
+.faq details { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; margin-bottom: 10px; }
+.faq summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; }
+.faq summary::after { content: "+"; color: var(--ice); font-size: 22px; line-height: 1; transition: .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq p { color: var(--muted); margin-top: 10px; font-size: 16px; }
+
+.alt { background: var(--bg2); }
+.botsec { background: linear-gradient(180deg, var(--bg), var(--bg2)); }
+.botsec .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.ticks { list-style: none; padding: 0; margin-top: 18px; }
+.ticks li { padding: 7px 0 7px 34px; position: relative; }
+.ticks li::before { content: "✓"; position: absolute; left: 0; width: 23px; height: 23px; border-radius: 50%; background: var(--ice); color: var(--on); display: grid; place-items: center; font-size: 13px; top: 9px; font-weight: 800; }
+.contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.rate { font-size: 46px; font-weight: 800; color: var(--ice); }
+footer { padding: 36px 0 90px; color: var(--muted); font-size: 14px; text-align: center; border-top: 1px solid var(--line); }
+
+.bd { --bd-accent: #6c7bff; --bd-on: #fff; --bd-ink: #eaf1ff; --bd-muted: #9fabdf; --bd-line: #2c3390; --bd-bg: #0a0c2a; --bd-head: #14174a; --bd-bubble: #20266e; --bd-bubble-ink: #eaf1ff; --bd-key: #20266e; --bd-key-ink: #d6f1ff; --bd-key-hover: #2c3390; --bd-form: #14174a; --bd-input: #0d0f33; --bd-input-ink: #eaf1ff; --bd-input-line: #2c3390; --bd-admin: #14174a; --bd-admin-ink: #eaf1ff; --bd-soft: #20266e; --bd-frame: #05061a; --bd-tab: #14174a; --bd-tab-ink: #d6f1ff; --bd-tab-line: #2c3390; }
+
+.rv { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+.rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .rv { opacity: 1; transform: none; } }
+@media (max-width: 860px) {
+  .hero .wrap, .botsec .wrap, .contacts, .quiz { grid-template-columns: 1fr; }
+  .grid3, .steps { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr auto; } .row .pill { justify-self: start; }
+  .quiz { padding: 28px; }
+  nav { display: none; }
+  .orbit { width: min(86%, 340px); }
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">МАЛЕН<span>.</span>ФИТ</a>
+  <nav><a href="#dir">Направления</a><a href="#quiz">Подбор</a><a href="#schedule">Расписание</a><a href="#faq">Вопросы</a><a href="#bot">Запись</a></nav>
+  <a class="btn" href="#bot" style="padding:10px 22px;font-size:15px">Записаться</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <span class="tag">Две студии на севере Петербурга</span>
+    <h1>Танцы, растяжка и йога <em>в удовольствие</em></h1>
+    <p class="lead">Уютные залы, мягкие группы и тренеры, которые подскажут с нуля. Начните с пробного занятия и выберите своё направление.</p>
+    <div class="cta"><a class="btn" href="#bot">Записаться на пробное</a><a class="btn ghost" href="#quiz">Подобрать направление</a></div>
+    <div class="facts"><div><b>4.8</b><span>рейтинг в 2ГИС</span></div><div><b>80</b><span>оценок гостей</span></div><div><b>2</b><span>студии</span></div></div>
+  </div>
+  <div class="orbit" aria-hidden="true">
+    <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+    <div class="core"><div><b>4.8★</b><span>80 оценок<br>в 2ГИС</span></div></div>
+    <div class="chip a">💃 Танцы</div><div class="chip b">🤸 Растяжка</div><div class="chip c">🧘 Йога</div>
+  </div>
+</div></div>
+
+<div class="marq" aria-hidden="true"><div>ТАНЦЫ ✦ РАСТЯЖКА ✦ ЙОГА ✦ ПРОБНОЕ ЗАНЯТИЕ ✦ ГРУППЫ С НУЛЯ ✦ ТАНЦЫ ✦ РАСТЯЖКА ✦ ЙОГА ✦ ПРОБНОЕ ЗАНЯТИЕ ✦ ГРУППЫ С НУЛЯ ✦ ТАНЦЫ ✦ РАСТЯЖКА ✦ ЙОГА ✦ ПРОБНОЕ ЗАНЯТИЕ ✦ ГРУППЫ С НУЛЯ ✦ ТАНЦЫ ✦ РАСТЯЖКА ✦ ЙОГА ✦ ПРОБНОЕ ЗАНЯТИЕ ✦ ГРУППЫ С НУЛЯ ✦ </div></div>
+
+<section id="dir"><div class="wrap">
+  <h2 class="rv">Направления</h2><p class="sub rv">Выберите формат под настроение и уровень подготовки.</p>
+  <div class="grid3">
+    <div class="card rv"><div class="ic">💃</div><h3>Танцы</h3><p>Современные направления в группах для начинающих и продолжающих. Музыка, движение и хорошее настроение.</p></div>
+    <div class="card rv"><div class="ic">🤸</div><h3>Растяжка</h3><p>Бережная работа с гибкостью и осанкой. Подойдёт, даже если «никогда не садилась на шпагат».</p></div>
+    <div class="card rv"><div class="ic">🧘</div><h3>Йога</h3><p>Спокойные занятия для снятия напряжения и укрепления тела.</p></div>
+  </div>
+</div></section>
+
+<section id="quiz" style="padding-top:0"><div class="wrap"><div class="quiz rv">
+  <div>
+    <h2>Что подойдёт именно вам?</h2>
+    <p style="opacity:.9;margin-bottom:22px">Два вопроса, и мы подскажем, с чего начать. Это пример интерактива, который удобно держать и в боте.</p>
+    <div class="q">Чего хочется?</div>
+    <div class="opts" data-q="goal"><button data-v="flex">Стать гибче</button><button data-v="energy">Заряд энергии</button><button data-v="calm">Расслабиться</button></div>
+    <div class="q">Опыт занятий?</div>
+    <div class="opts" data-q="exp"><button data-v="new">С нуля</button><button data-v="some">Уже занималась</button></div>
+  </div>
+  <div class="result wait" id="result">Выберите ответы слева, и здесь появится подсказка 👈</div>
+</div></div></section>
+
+<section id="schedule" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Расписание</h2><p class="sub rv">Так расписание выглядит на сайте: фильтр по направлению и кнопка записи в каждой строке.</p>
+  <div class="filters" id="filters"><button class="on" data-f="all">Все</button><button data-f="dance">Танцы</button><button data-f="stretch">Растяжка</button><button data-f="yoga">Йога</button></div>
+  <div class="sch" id="sch">
+    <div class="row" data-k="stretch"><b>Понедельник</b><span>19:00</span><span>Растяжка <span class="pill">с нуля</span></span><a href="#bot">Записаться →</a></div>
+    <div class="row" data-k="dance"><b>Вторник</b><span>20:00</span><span>Танцы <span class="pill">для начинающих</span></span><a href="#bot">Записаться →</a></div>
+    <div class="row" data-k="yoga"><b>Среда</b><span>19:30</span><span>Йога <span class="pill">любой уровень</span></span><a href="#bot">Записаться →</a></div>
+    <div class="row" data-k="dance"><b>Четверг</b><span>20:00</span><span>Танцы <span class="pill">продолжающие</span></span><a href="#bot">Записаться →</a></div>
+    <div class="row" data-k="stretch"><b>Суббота</b><span>11:00</span><span>Растяжка <span class="pill">любой уровень</span></span><a href="#bot">Записаться →</a></div>
+    <div class="row" data-k="yoga"><b>Воскресенье</b><span>12:00</span><span>Йога <span class="pill">мягкий старт</span></span><a href="#bot">Записаться →</a></div>
+  </div>
+  <p class="note">Расписание в демо — пример оформления, не реальное.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2 class="rv">Как проходит пробное</h2><p class="sub rv">Без обязательств: приходите, пробуйте и решайте.</p>
+  <div class="steps">
+    <div class="step rv"><h3>Запись</h3><p>Выберите направление и время на сайте или в Telegram-боте.</p></div>
+    <div class="step rv"><h3>Занятие</h3><p>Тренер объяснит всё с нуля и подберёт нагрузку под вас.</p></div>
+    <div class="step rv"><h3>Решение</h3><p>Понравилось? Администратор подскажет по абонементам.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2 class="rv">Частые вопросы</h2><p class="sub rv">Ответы, которые бот может давать клиентам сам.</p>
+  <div class="faq rv">
+    <details><summary>Нужна ли подготовка?</summary><p>Нет. Есть группы для начинающих, тренер подстроит нагрузку.</p></details>
+    <details><summary>Что взять с собой?</summary><p>Удобную форму и воду. Коврики можно уточнить у администратора.</p></details>
+    <details><summary>Как записаться на пробное?</summary><p>В Telegram-боте ниже или у администратора в личных сообщениях.</p></details>
+    <details><summary>Можно ли заморозить абонемент?</summary><p>Условия зависят от абонемента, их называет администратор.</p></details>
+  </div>
+  <p class="note">Тексты ответов в демо общие, точные условия нужно взять у студии.</p>
+</div></section>
+
+<section class="botsec" id="bot"><div class="wrap">
+  <div>
+    <h2>Запись прямо в Telegram</h2>
+    <p class="sub" style="margin-bottom:0">Сейчас абонементы принимают в личных сообщениях. Бот может делать это сам, а администратор только подтверждает.</p>
+    <ul class="ticks">
+      <li>Расписание и запись на пробное в два нажатия</li>
+      <li>Оформление абонемента и напоминание о занятии</li>
+      <li>Все заявки приходят администратору в одну панель</li>
+    </ul>
+    <p class="note">Справа живая демка: попробуйте записаться.</p>
+  </div>
+  <div id="bot-demo"></div>
+</div></section>
+
+<section id="contacts" style="padding-top:60px"><div class="wrap">
+  <h2>Контакты</h2><p class="sub">Мурино, Петровский бульвар, 7.</p>
+  <div class="contacts">
+    <div class="card"><div class="rate">4.8 ★</div><p>80 оценок в 2ГИС</p></div>
+    <div class="card"><h3>Как добраться</h3><p>Здесь будет карта и схема проезда. Для демо оставлен только адрес.</p></div>
+  </div>
+</div></section>
+
+<footer>© Демо-страница. Все данные — публичные сведения о студии и условный пример оформления.</footer>
+
+<script src="/demos/_shared/bot.js"></script>
+<script>
+BotDemo.mount('#bot-demo', {
+  botName: 'Мален.Фит · запись', avatar: 'М', handle: '@malenfit_demo_bot',
+  greeting: 'Привет! 👋 Я помогу записаться на занятие в «Мален.Фит».',
+  priceNote: 'Цены уточняйте у администратора (в демо не указаны).',
+  services: [
+    { name: 'Пробное: танцы', meta: 'Группа для начинающих, 60 минут' },
+    { name: 'Пробное: растяжка', meta: 'Группа с нуля, 60 минут' },
+    { name: 'Пробное: йога', meta: 'Спокойная группа, 60 минут' }
+  ],
+  slots: ['11:00', '18:00', '19:00', '19:30', '20:00', '21:00'],
+  closedWeekdays: [], daysAhead: 6
+});
+
+/* фильтр расписания */
+var rows = document.querySelectorAll('#sch .row');
+document.querySelectorAll('#filters button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('#filters button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    var f = b.dataset.f;
+    rows.forEach(function (r) { r.hidden = f !== 'all' && r.dataset.k !== f; });
+  });
+});
+
+/* подбор направления */
+var ans = {};
+var RES = {
+  flex: { e: '🤸', t: 'Растяжка', p: 'Бережно разовьёт гибкость и поправит осанку.' },
+  energy: { e: '💃', t: 'Танцы', p: 'Движение под музыку: заряд энергии и хорошее настроение.' },
+  calm: { e: '🧘', t: 'Йога', p: 'Спокойный темп, дыхание и снятие напряжения.' }
+};
+function showResult() {
+  if (!ans.goal || !ans.exp) return;
+  var r = RES[ans.goal];
+  var lvl = ans.exp === 'new' ? 'Для вас есть группа с нуля, тренер всё объяснит.' : 'Тренер подберёт группу по вашему уровню.';
+  var el = document.getElementById('result');
+  el.className = 'result';
+  el.innerHTML = '<div class="big">' + r.e + '</div><h3>' + r.t + '</h3><p>' + r.p + ' ' + lvl + '</p><a class="btn" href="#bot" style="align-self:flex-start">Записаться на пробное</a>';
+}
+document.querySelectorAll('.opts').forEach(function (g) {
+  g.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      g.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+      ans[g.dataset.q] = b.dataset.v;
+      showResult();
+    });
+  });
+});
+
+/* появление блоков при прокрутке */
+var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) {
+  en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .12 }) : null;
+document.querySelectorAll('.rv').forEach(function (n) { io ? io.observe(n) : n.classList.add('in'); });
+</script>
+<script src="/demos/_shared/ribbon.js"></script>
+</body>
+</html>
