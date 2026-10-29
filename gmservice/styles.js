@@ -24,6 +24,13 @@
   .gs-pick { position:fixed; z-index:60; right:16px; bottom:16px; font:14px/1.43 'Inter',system-ui,sans-serif; }
   .gs-toggle { cursor:pointer; background:#000; color:#fff; border:1px solid #292d30; border-radius:6px; padding:12px 16px; font:500 14px/1 inherit; transition:border-color .15s ease-out; }
   .gs-toggle:hover { border-color:#fff; }
+  .gs-toggle { padding:14px 20px; font-size:15px; border-color:#6e727a; position:relative; }
+  /* для тех, кто на сайте впервые: тонкое кольцо пульсирует, пока кнопку не нажмут */
+  .gs-toggle.pulse::after, .gs-nav.pulse::after { content:''; position:absolute; inset:-5px; border:1px solid #fff; border-radius:10px; opacity:0; animation:gs-ring 2.2s ease-out infinite; pointer-events:none; }
+  @keyframes gs-ring { 0% { opacity:.7; transform:scale(.96); } 100% { opacity:0; transform:scale(1.12); } }
+  .gs-nav { position:relative; cursor:pointer; background:transparent; color:#fff; border:1px solid #6e727a; border-radius:6px; padding:8px 16px; font:500 14px/1.4 'Inter',system-ui,sans-serif; transition:border-color .15s ease-out; }
+  .gs-nav:hover { border-color:#fff; }
+  @media (prefers-reduced-motion:reduce) { .gs-toggle.pulse::after, .gs-nav.pulse::after { animation:none; opacity:.5; } }
   .gs-panel { display:none; width:min(320px, calc(100vw - 32px)); margin-bottom:8px; padding:16px; border-radius:16px; background:rgba(0,0,0,.95); border:1px solid #292d30; backdrop-filter:blur(25px); }
   .gs-pick.open .gs-panel { display:grid; gap:8px; }
   .gs-head { color:#a1a4a5; font:400 12px/1.33 'JetBrains Mono','Commit Mono',ui-monospace,monospace; margin-bottom:4px; }
@@ -333,6 +340,7 @@
     document.body.dataset.style = id;
     killIntro(); stopWaves();
     if (user && window.gmSound) window.gmSound('whoosh');
+    if (user) markSeen();
     const pre = $('#pre');
     if (id === 'stairs') { if (window.gmStairs && (user || pre.classList.contains('run'))) { pre.className = 'run'; void pre.offsetWidth; window.gmStairs(); } }
     else { pre.className = 'gone'; }
@@ -343,7 +351,23 @@
     paintPick();
   };
 
-  pick.querySelector('.gs-toggle').onclick = () => pick.classList.toggle('open');
+  // кнопка выбора стиля должна бросаться в глаза: есть в шапке и внизу, пульсирует и сама раскрывается при первом заходе
+  const toggle = pick.querySelector('.gs-toggle');
+  toggle.textContent = 'Выбрать стиль сайта';
+  const navBtn = document.createElement('button');
+  navBtn.type = 'button'; navBtn.className = 'gs-nav'; navBtn.textContent = 'Выбрать стиль';
+  const navCta = $('.nav .wrap > .btn');
+  if (navCta) navCta.parentNode.insertBefore(navBtn, navCta);
+  const seen = () => read('gm-picker-seen', '') === '1';
+  const markSeen = () => { write('gm-picker-seen', '1'); toggle.classList.remove('pulse'); navBtn.classList.remove('pulse'); };
+  const setOpen = (v) => { pick.classList.toggle('open', v); if (v) markSeen(); };
+  toggle.onclick = () => setOpen(!pick.classList.contains('open'));
+  navBtn.onclick = () => { setOpen(!pick.classList.contains('open')); };
+  if (!seen()) {
+    toggle.classList.add('pulse'); navBtn.classList.add('pulse');
+    const afterIntro = style === 'stairs' ? 3800 : style === 'particles' ? 4600 : 1200;
+    setTimeout(() => { if (!seen()) { pick.classList.add('open'); } }, afterIntro);
+  }
   pick.querySelectorAll('button[data-id]').forEach((b) => { b.onclick = () => apply(b.dataset.id, true); });
   pick.querySelector('.gs-ok').onclick = () => { chosen = style; write('gm-style-chosen', chosen); paintPick(); };
   const rp = $('#replay'); if (rp) rp.onclick = () => apply(style, true);
